@@ -13,7 +13,7 @@ df = pd.read_csv('alzheimers_disease_data.csv')
 
 # Preprocessing 
 # Splitting the dataset into features (X) and target (y)
-X = df.drop(['DoctorInCharge', 'Diagnosis'], axis=1)  # Features
+X = df.drop(['DoctorInCharge', 'Diagnosis', 'PatientID'], axis=1)  # Features
 y = df['Diagnosis']  # Target variable
 
 # Splitting data into training and testing sets

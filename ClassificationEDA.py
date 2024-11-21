@@ -10,13 +10,13 @@ print("Dataset types")
 df.shape
 df.info()
 
-#for column in df.columns:
-#    plt.figure(figsize=(10, 5))
-#    sns.histplot(df[column], bins=30, kde=True)
-#    plt.title(f'Distribution of {column}')
-#    plt.xlabel(column)
-#    plt.ylabel('Frequency')
-#    plt.show()
+for column in df.columns:
+    plt.figure(figsize=(10, 5))
+    sns.histplot(df[column], bins=30, kde=True)
+    plt.title(f'Distribution of {column}')
+    plt.xlabel(column)
+    plt.ylabel('Frequency')
+    plt.show()
 
 # Calculate number of Null
 print("\nNumber of Null")

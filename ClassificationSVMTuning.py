@@ -28,9 +28,9 @@ X_test = scaler.transform(X_test)
 svm_model = SVC(random_state=42)
 
 # Define the parameter grid for RandomizedSearchCV
-svm_param_dist = {
-    'C': uniform(1, 1000),                               # Regularization parameter
-    'gamma': ['scale', 'auto', 0.001, 1],        # Kernel coefficient
+svm_param_grid = {
+    'C': uniform(1, 1000),                                # Regularization parameter
+    'gamma': ['scale', 'auto', 0.001, 1],                 # Kernel coefficient
     'kernel': ['linear', 'rbf', 'poly', ],                # Type of kernel
     'degree': randint(2, 6),                              # Degree for 'poly' kernel
     'tol': uniform(1e-5, 1e-2),                           # Tolerance for stopping criterion
@@ -38,9 +38,9 @@ svm_param_dist = {
 
 # Initialize RandomizedSearchCV
 random_search_svm = RandomizedSearchCV(estimator=svm_model, 
-                                   param_distributions=svm_param_dist, 
+                                   param_distributions=svm_param_grid, 
                                    n_iter=100,           # Number of random combinations to try
-                                   cv=5,                 # 5-fold cross-validation
+                                   cv=5,                 
                                    n_jobs=-1,            # Use all available CPU cores
                                    verbose=1,
                                    scoring='accuracy',   # Metric to optimize for

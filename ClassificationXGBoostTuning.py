@@ -19,7 +19,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 xgb_model = XGBClassifier(use_label_encoder=False, eval_metric='logloss', random_state=42)
 
 # Define the parameter grid for RandomizedSearchCV
-xgb_param_dist = {
+xgb_param_grid = {
     'learning_rate': [0.05, 0.01, 0.1, 0.2, 0.3],  
     'max_depth': [3, 5, 7, 9, 12],                 # Depth of each tree
     'n_estimators': [50, 100, 150, 200],           # Number of boosting rounds (trees)
@@ -31,10 +31,11 @@ xgb_param_dist = {
 
 # Initialize the RandomizedSearchCV
 random_search_xgb = RandomizedSearchCV(estimator=xgb_model, 
-                                   param_distributions=xgb_param_dist, 
+                                   param_distributions=xgb_param_grid, 
                                    n_iter=100,          # Number of random combinations to try
-                                   cv=8,                # 5-fold cross-validation
+                                   cv=8,                
                                    n_jobs=-1,           # Use all available CPU cores
+                                   verbose=1,
                                    scoring='accuracy',  # Metric to optimize for
                                    random_state=42)
 

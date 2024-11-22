@@ -54,7 +54,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 xgb_model = XGBRegressor(n_estimators=100, learning_rate=0.1, random_state=42)
 xgb_model.fit(X_train, y_train)
 
-# Define the parameter grid for Random Forest
+# Define the parameter grid for XGBoost
 xgb_param_grid = {
     'n_estimators': [50, 100, 200],
     'max_depth': [3, 5, 7, 9],
@@ -64,12 +64,12 @@ xgb_param_grid = {
     'min_child_weight': [1, 2, 5]
 }
 
-# Randomized Search for Random Forest
+# Randomized Search for XGBoost
 random_search_xgb = RandomizedSearchCV(estimator=XGBRegressor(),
-                               param_distributions=xgb_param_grid,
-                               n_iter=100,   
-                               cv=8,
-                               n_jobs=-1)  # Use all available cores
+                                       param_distributions=xgb_param_grid,
+                                       n_iter=100,   
+                                       cv=8,
+                                       n_jobs=-1)  # Use all available cores
 
 # Fit the Randomized Search model
 random_search_xgb.fit(X_train, y_train)

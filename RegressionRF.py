@@ -60,7 +60,7 @@ y_pred = rf_model.predict(X_test)
 r2 = r2_score(y_test, y_pred)
 print(f"R2 Score: {r2}")
 
-# Calculate Mean Squared Error
+# Calculate Mean Absolute Error
 mae = mean_absolute_error(y_test, y_pred)
 print(f"Mean Absolute Error: {mae}")
 
